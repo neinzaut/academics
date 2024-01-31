@@ -1,4 +1,4 @@
-# TUAZON, FRANCESCA MARIE A. (BCS24)
+# TUAZON, FRANCESCA MARIE A. (BCS24) - S-ITCS227LA
 ''' 
 A company SEES is in need of a payroll system that computes for the net pay of their employees. Where:
     - Gross pay = number of days worked per week times the rate per day of each employee

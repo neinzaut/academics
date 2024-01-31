@@ -1,5 +1,6 @@
-# TUAZON, FRANCESCA MARIE A. (BCS24)
+# TUAZON, FRANCESCA MARIE A. (BCS24) - S-ITCS227LA
 ''' Write a Python program that will compute the final grade of a student. Final grade is 30% average of quiz1, quiz2, and quiz3 plus 20% average of project1, project2, and project3 plus 30% of final exam plus 10% of assignment grade plus 10% class standing.'''
+# assumed that all of the assessments are over 100
 
 # QUIZZES (30%)
 quiz1 = int(input("Score of Quiz 1: "))

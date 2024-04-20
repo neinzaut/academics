@@ -1,0 +1,313 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "toc_visible": true,
+      "authorship_tag": "ABX9TyN3kZzIb8Cy9gXh29DT+CGr",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/neinzaut/academics/blob/main/MinMaxSum\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Sample"
+      ],
+      "metadata": {
+        "id": "DPQtQ2obX_OK"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "QsL6qDtfS6TZ",
+        "outputId": "f75c16b3-8b76-4df3-fbdc-28ccf60e2ee3"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Drive already mounted at /gdrive; to attempt to forcibly remount, call drive.mount(\"/gdrive\", force_remount=True).\n"
+          ]
+        }
+      ],
+      "source": [
+        "from google.colab import drive\n",
+        "drive.mount('/gdrive')"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "file = open('/gdrive/My Drive/codes/assets/Numbers.txt')\n",
+        "file.read()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 36
+        },
+        "id": "VAYrZf3oWi1S",
+        "outputId": "e74b99b6-9990-44d1-cc89-15f6537eff87"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "'55\\n69\\n90\\n88\\n75\\n53\\n60\\n89\\n99\\n80'"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            }
+          },
+          "metadata": {},
+          "execution_count": 98
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "file = open('/gdrive/My Drive/codes/assets/Numbers.txt')\n",
+        "file.readline()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 36
+        },
+        "id": "bVf6KkQDWtPO",
+        "outputId": "3539137a-a112-447d-d559-3dab70c8ff36"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "'55\\n'"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            }
+          },
+          "metadata": {},
+          "execution_count": 99
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "file = open('/gdrive/My Drive/codes/assets/Numbers.txt')\n",
+        "file.readlines()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "wubIIqlbWuql",
+        "outputId": "8152078b-1248-4667-e73a-9d1d88cdcefa"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "['55\\n', '69\\n', '90\\n', '88\\n', '75\\n', '53\\n', '60\\n', '89\\n', '99\\n', '80']"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 100
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Activity\n",
+        "\n",
+        "\n",
+        "Given the text file, write a program that reads the numbers from the file. Find the minimum number, maximum number, length of the list, and sum of the numbers. The program should print all the numbers, and display the minimum number,\n",
+        "maximum number, length of the list, and the total when all the numbers have been added together. *(Warning! The input from the file will be considered a string. Be sure to convert the input\n",
+        "to int or float – just as you do when numbers are entered from the keyboard.)*\n"
+      ],
+      "metadata": {
+        "id": "6gZucIBsYKtA"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "file = open('/gdrive/MyDrive/codes/assets/Numbers.txt')\n",
+        "\n",
+        "temp = file.read().split() # reads input from text file and separates each line\n",
+        "length = len(temp) # assign len() value to length so it can be used as a counter later on"
+      ],
+      "metadata": {
+        "id": "Xf_OvFwOYlIU"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "y = [] # empty array; will append the parsed values into this\n",
+        "ctr = 1\n",
+        "\n",
+        "while ctr <= length: # loop repeats until temp array is empty\n",
+        "  x = temp.pop() # assign currently popped value to a temporary variable x\n",
+        "  y.append(int(x)) # converts values from string to int\n",
+        "  ctr += 1\n",
+        "\n",
+        "y.reverse()\n",
+        "print(\"List: \", y)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "KmVcIDfkbFq4",
+        "outputId": "d1ecc5e1-cd7b-4862-cced-51dd59951211"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "List:  [55, 69, 90, 88, 75, 53, 60, 89, 99, 80]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# DISPLAY LENGTH OF LIST\n",
+        "\n",
+        "print(\"Number of elements in list: \", length)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ph9ZZmBvcaZL",
+        "outputId": "c94b3d2a-0cfe-46b9-8ea0-6fd46828284c"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Number of elements in list:  10\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# DISPLAY MINIMUM NUMBER\n",
+        "\n",
+        "print(\"Minimum Number: \", min(y))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ksShkWBv9YWr",
+        "outputId": "021857e4-0d41-4ea2-c2b4-34e5521402ae"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Minimum Number:  53\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# DISPLAY MAXIMUM NUMBER\n",
+        "\n",
+        "print(\"Maximum Number: \", max(y))"
+      ],
+      "metadata": {
+        "id": "lwXxggPYbF8O",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "fa439499-457c-4630-f325-2c42e7b79772"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Maximum Number:  99\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# DISPLAY TOTAL\n",
+        "\n",
+        "print(\"Total: \", sum(y))"
+      ],
+      "metadata": {
+        "id": "wO7uEQIgcaKD",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "425f03db-3381-46e7-a5e7-b1fd0b45bc17"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Total:  758\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
